@@ -66,32 +66,18 @@ class Map {
   getColoredMap() {
     // TODO: That's where you work
     
-    var coloredMap = [];
+    var coloredMap = this.getRawMap();
     var allIslands=this.solve();
-    for(var j=0;j<this.map.length;j++){
-      for(var m=0;m<this.map[j].length;m++){
-        var row=[]
-        
-        for (var i = 0; i < allIslands.length; i++) {
+         for (var i = 0; i < allIslands.length; i++) {
           var color=this.generateRandomColor()
-         for(var k=0;k < allIslands[i].length;k++)
-         {
-          
-            var index_x=allIslands[i][k][0]
-            var index_y=allIslands[i][k][1]
-            if(j==index_x && m==index_y){
-              row.push(color)
-            }else{
-              row.push(this.map[j][m])
-            }
-          
+          for(var j=0;j<allIslands[i].length;j++){
+            coloredMap[allIslands[i][j][0]][allIslands[i][j][1]]=color
+          }
+           
+       
          }
-        }
-        coloredMap.push(row)
-      }
+        
       
-    }
-    
     return coloredMap;
   }
   
